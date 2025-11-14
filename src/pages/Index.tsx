@@ -20,28 +20,121 @@ const Index = () => {
 
   const products = [
     {
-      id: 'small',
+      id: 'ellipso-small',
       name: 'Ellipso Малый',
       height: '48 см',
       diameter: '140 см',
       description: 'Компактный светильник для небольших помещений',
-      price: 'По запросу'
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/1bf24e3d-7299-4e55-b7ea-4ba6fb7df1cf.JPG'
     },
     {
-      id: 'medium',
+      id: 'ellipso-medium',
       name: 'Ellipso Средний',
       height: '62 см',
       diameter: '180 см',
       description: 'Идеальное решение для гостиных и столовых',
-      price: 'По запросу'
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/1bf24e3d-7299-4e55-b7ea-4ba6fb7df1cf.JPG'
     },
     {
-      id: 'large',
+      id: 'ellipso-large',
       name: 'Ellipso Большой',
       height: '68 см',
       diameter: '200 см',
       description: 'Эффектный светильник для больших пространств',
-      price: 'По запросу'
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/1bf24e3d-7299-4e55-b7ea-4ba6fb7df1cf.JPG'
+    },
+    {
+      id: 'bola-small',
+      name: 'Bola Малый',
+      height: '70 см',
+      diameter: '70 см',
+      description: 'Сферический светильник с узором "ёлочка"',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/35efd222-b2a9-49ef-8fdf-c55280acf95c.JPG'
+    },
+    {
+      id: 'bola-medium',
+      name: 'Bola Средний',
+      height: '90 см',
+      diameter: '90 см',
+      description: 'Идеален для просторных комнат',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/35efd222-b2a9-49ef-8fdf-c55280acf95c.JPG'
+    },
+    {
+      id: 'cocoon-small',
+      name: 'Cocoon Малый',
+      height: '70 см',
+      diameter: '45 см',
+      description: 'Светильник каплевидной формы',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/0894cd56-fa9c-4f2b-bbe2-d7d0b5533245.JPG'
+    },
+    {
+      id: 'cocoon-medium',
+      name: 'Cocoon Средний',
+      height: '90 см',
+      diameter: '60 см',
+      description: 'Элегантная капля для высоких потолков',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/0894cd56-fa9c-4f2b-bbe2-d7d0b5533245.JPG'
+    },
+    {
+      id: 'cone-small',
+      name: 'Cone Малый',
+      height: '70 см',
+      diameter: '37 см',
+      description: 'Конический светильник с ажурным узором',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/43858bca-a456-4d51-ae80-4e593ece2cd5.jpg'
+    },
+    {
+      id: 'cone-medium',
+      name: 'Cone Средний',
+      height: '85 см',
+      diameter: '44 см',
+      description: 'Красивая игра света через узор',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/43858bca-a456-4d51-ae80-4e593ece2cd5.jpg'
+    },
+    {
+      id: 'morel-small',
+      name: 'Morel Малый',
+      height: '68 см',
+      diameter: '50 см',
+      description: 'Светильник с геометрическим узором',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/c5778229-b5e5-4ff8-858d-fa7a001d76f2.JPG'
+    },
+    {
+      id: 'morel-medium',
+      name: 'Morel Средний',
+      height: '81 см',
+      diameter: '60 см',
+      description: 'Эффектные световые узоры на стенах',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/c5778229-b5e5-4ff8-858d-fa7a001d76f2.JPG'
+    },
+    {
+      id: 'sephora-small',
+      name: 'Sephora Малый',
+      height: '50 см',
+      diameter: '65 см',
+      description: 'Сферический светильник с плетеным узором',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/17481373-a7d8-4852-83b2-74ab2d80637e.jpg'
+    },
+    {
+      id: 'sephora-medium',
+      name: 'Sephora Средний',
+      height: '56 см',
+      diameter: '75 см',
+      description: 'Создает уникальную игру света и тени',
+      price: 'По запросу',
+      image: 'https://cdn.poehali.dev/files/17481373-a7d8-4852-83b2-74ab2d80637e.jpg'
     }
   ];
 
@@ -130,7 +223,7 @@ const Index = () => {
           <h2 className="text-4xl font-heading font-bold text-center mb-4">Модели</h2>
           <p className="text-center text-muted-foreground mb-12">Выберите идеальный размер для вашего интерьера</p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto">
             {products.map((product, index) => (
               <Card 
                 key={product.id} 
@@ -139,8 +232,12 @@ const Index = () => {
                 onClick={() => setSelectedProduct(product.id)}
               >
                 <CardContent className="p-6">
-                  <div className="mb-6 bg-secondary/50 rounded-lg p-8 flex items-center justify-center">
-                    <Icon name="Lightbulb" size={64} className="text-accent" />
+                  <div className="mb-6 rounded-lg overflow-hidden aspect-square">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
                   <h3 className="text-2xl font-heading font-semibold mb-4">{product.name}</h3>
                   <div className="space-y-3 mb-6">
