@@ -54,6 +54,27 @@ const Index = () => {
     { name: 'Графит', color: '#3A3A3A' }
   ];
 
+  const gallery = [
+    {
+      id: 1,
+      image: 'https://cdn.poehali.dev/projects/8db773eb-2f29-4d9c-a83c-618eaa512ca4/files/73818cc0-94e0-4abe-9acc-31f0e3431609.jpg',
+      title: 'Столовая',
+      description: 'Ellipso создает уютную атмосферу за обеденным столом'
+    },
+    {
+      id: 2,
+      image: 'https://cdn.poehali.dev/projects/8db773eb-2f29-4d9c-a83c-618eaa512ca4/files/0966fea4-3a80-4791-be61-19778b486e57.jpg',
+      title: 'Гостиная',
+      description: 'Элегантное решение для современного интерьера'
+    },
+    {
+      id: 3,
+      image: 'https://cdn.poehali.dev/projects/8db773eb-2f29-4d9c-a83c-618eaa512ca4/files/8122988f-07a7-4eeb-9f41-2296ef33d579.jpg',
+      title: 'Спальня',
+      description: 'Мягкий рассеянный свет для комфортного отдыха'
+    }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -70,6 +91,7 @@ const Index = () => {
           <h1 className="text-2xl font-heading font-bold">ELLIPSO</h1>
           <div className="flex gap-8">
             <a href="#catalog" className="hover:text-accent transition-colors">Каталог</a>
+            <a href="#gallery" className="hover:text-accent transition-colors">Галерея</a>
             <a href="#about" className="hover:text-accent transition-colors">О светильнике</a>
             <a href="#contact" className="hover:text-accent transition-colors">Контакты</a>
           </div>
@@ -140,6 +162,35 @@ const Index = () => {
                   }}>
                     Заказать
                   </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-heading font-bold text-center mb-4">Галерея интерьеров</h2>
+          <p className="text-center text-muted-foreground mb-12">Вдохновляющие примеры использования Ellipso в разных пространствах</p>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {gallery.map((item, index) => (
+              <Card 
+                key={item.id} 
+                className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-heading font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
