@@ -223,24 +223,24 @@ const Index = () => {
           <h2 className="text-4xl font-heading font-bold text-center mb-4">Модели</h2>
           <p className="text-center text-muted-foreground mb-12">Выберите идеальный размер для вашего интерьера</p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {products.map((product, index) => (
               <Card 
                 key={product.id} 
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => setSelectedProduct(product.id)}
               >
-                <CardContent className="p-6">
-                  <div className="mb-6 rounded-lg overflow-hidden aspect-square">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <h3 className="text-2xl font-heading font-semibold mb-4">{product.name}</h3>
-                  <div className="space-y-3 mb-6">
+                <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-heading font-semibold mb-3">{product.name}</h3>
+                  <div className="space-y-2 mb-4 flex-grow">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Высота:</span>
                       <span className="font-semibold">{product.height}</span>
@@ -249,10 +249,10 @@ const Index = () => {
                       <span className="text-muted-foreground">Диаметр:</span>
                       <span className="font-semibold">{product.diameter}</span>
                     </div>
-                    <Separator />
+                    <Separator className="my-2" />
                     <p className="text-sm text-muted-foreground">{product.description}</p>
                   </div>
-                  <div className="text-xl font-heading font-bold text-accent mb-4">{product.price}</div>
+                  <div className="text-lg font-heading font-bold text-accent mb-3">{product.price}</div>
                   <Button className="w-full" onClick={(e) => {
                     e.stopPropagation();
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
