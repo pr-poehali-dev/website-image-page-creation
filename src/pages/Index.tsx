@@ -219,49 +219,270 @@ const Index = () => {
       </section>
 
       <section id="catalog" className="py-20 px-4 bg-secondary/30">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-heading font-bold text-center mb-4">Модели</h2>
-          <p className="text-center text-muted-foreground mb-12">Выберите идеальный размер для вашего интерьера</p>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {products.map((product, index) => (
-              <Card 
-                key={product.id} 
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
-                style={{ animationDelay: `${index * 50}ms` }}
-                onClick={() => setSelectedProduct(product.id)}
-              >
-                <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <CardContent className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-heading font-semibold mb-3">{product.name}</h3>
-                  <div className="space-y-2 mb-4 flex-grow">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Высота:</span>
-                      <span className="font-semibold">{product.height}</span>
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-4xl font-heading font-bold text-center mb-4">Коллекции светильников</h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Каждая коллекция создана вручную из натурального дерева и имеет уникальный характер
+          </p>
+
+          <div className="space-y-20">
+            <div className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-heading font-bold mb-3">Ellipso</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Светильник изготовлен из 44 полосок шпона натурального дерева и соединён стальными люверсами. 
+                  Может быть окрашен эмалями RAL/NCS. Создаёт уникальные световые узоры на стенах и потолке.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.filter(p => p.id.startsWith('ellipso')).map((product, index) => (
+                  <Card 
+                    key={product.id} 
+                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Диаметр:</span>
-                      <span className="font-semibold">{product.diameter}</span>
+                    <CardContent className="p-5 flex flex-col flex-grow">
+                      <h4 className="text-lg font-heading font-semibold mb-3">{product.name}</h4>
+                      <div className="space-y-2 mb-auto">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Высота:</span>
+                          <span className="font-semibold">{product.height}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Диаметр:</span>
+                          <span className="font-semibold">{product.diameter}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-4" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Заказать
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-heading font-bold mb-3">Bola</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Светильник изготовлен из 30 полосок шпона натурального дерева с узором "ёлочка". 
+                  Соединён стальными люверсами. Идеален для создания уютной атмосферы в любом интерьере.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.filter(p => p.id.startsWith('bola')).map((product, index) => (
+                  <Card 
+                    key={product.id} 
+                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <Separator className="my-2" />
-                    <p className="text-sm text-muted-foreground">{product.description}</p>
-                  </div>
-                  <div className="text-lg font-heading font-bold text-accent mb-3">{product.price}</div>
-                  <Button className="w-full" onClick={(e) => {
-                    e.stopPropagation();
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}>
-                    Заказать
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                    <CardContent className="p-5 flex flex-col flex-grow">
+                      <h4 className="text-lg font-heading font-semibold mb-3">{product.name}</h4>
+                      <div className="space-y-2 mb-auto">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Высота:</span>
+                          <span className="font-semibold">{product.height}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Диаметр:</span>
+                          <span className="font-semibold">{product.diameter}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-4" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Заказать
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-heading font-bold mb-3">Cocoon</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Светильник изготовлен из 20 полосок шпона натурального дерева. 
+                  Каплевидная форма создаёт мягкое рассеянное освещение и добавляет элегантности интерьеру.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.filter(p => p.id.startsWith('cocoon')).map((product, index) => (
+                  <Card 
+                    key={product.id} 
+                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-5 flex flex-col flex-grow">
+                      <h4 className="text-lg font-heading font-semibold mb-3">{product.name}</h4>
+                      <div className="space-y-2 mb-auto">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Высота:</span>
+                          <span className="font-semibold">{product.height}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Диаметр:</span>
+                          <span className="font-semibold">{product.diameter}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-4" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Заказать
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-heading font-bold mb-3">Cone</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Светильник изготовлен из 20 полосок шпона натурального дерева. 
+                  Коническая форма с ажурным узором создаёт красивую игру света и теней в помещении.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.filter(p => p.id.startsWith('cone')).map((product, index) => (
+                  <Card 
+                    key={product.id} 
+                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-5 flex flex-col flex-grow">
+                      <h4 className="text-lg font-heading font-semibold mb-3">{product.name}</h4>
+                      <div className="space-y-2 mb-auto">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Высота:</span>
+                          <span className="font-semibold">{product.height}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Диаметр:</span>
+                          <span className="font-semibold">{product.diameter}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-4" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Заказать
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-heading font-bold mb-3">Morel</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Светильник изготовлен из 20 полосок шпона натурального дерева. 
+                  Геометрический узор создаёт эффектные световые композиции на стенах.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.filter(p => p.id.startsWith('morel')).map((product, index) => (
+                  <Card 
+                    key={product.id} 
+                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-5 flex flex-col flex-grow">
+                      <h4 className="text-lg font-heading font-semibold mb-3">{product.name}</h4>
+                      <div className="space-y-2 mb-auto">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Высота:</span>
+                          <span className="font-semibold">{product.height}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Диаметр:</span>
+                          <span className="font-semibold">{product.diameter}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-4" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Заказать
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-heading font-bold mb-3">Sephora</h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Светильник изготовлен из 30 полосок шпона натурального дерева. 
+                  Сферическая форма с плетёным узором создаёт уникальную игру света и тени.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.filter(p => p.id.startsWith('sephora')).map((product, index) => (
+                  <Card 
+                    key={product.id} 
+                    className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-fade-in flex flex-col h-full"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-5 flex flex-col flex-grow">
+                      <h4 className="text-lg font-heading font-semibold mb-3">{product.name}</h4>
+                      <div className="space-y-2 mb-auto">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Высота:</span>
+                          <span className="font-semibold">{product.height}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Диаметр:</span>
+                          <span className="font-semibold">{product.diameter}</span>
+                        </div>
+                      </div>
+                      <Button className="w-full mt-4" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        Заказать
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
